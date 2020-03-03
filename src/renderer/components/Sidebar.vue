@@ -3,21 +3,16 @@
 		<div class="inner">
 			<h4>Overview</h4>
 			<ul>
-				<!-- <li>
+				<li>
 					<router-link :to="{ name: MappedRoutes.Dashboard }"
 						>Dashboard</router-link
-					>
-				</li>
-				<li>
-					<router-link :to="{ name: MappedRoutes.ComponentDoc }"
-						>Component</router-link
 					>
 				</li>
 				<li>
 					<router-link :to="{ name: MappedRoutes.CodeAnalysis }"
 						>Code Analysis</router-link
 					>
-				</li> -->
+				</li>
 			</ul>
 			<h4>Test Component</h4>
 			<ul>
@@ -41,18 +36,18 @@
 <script lang="ts">
 // import { Component, Vue } from 'vue-property-decorator'
 import Vue from 'Vue'
-// import Routes from '@/router/IRoutes'
+import { Routes } from '../router/IRoutes'
 
 export default Vue.extend({
 	computed: {
 		MappedRoutes() {
 			return {
-				// Dashboard: Routes.Dashboard,
-				// 			ComponentDoc: Routes.ComponentDoc,
-				// 			CodeAnalysis: Routes.CodeAnalysis,
+				Dashboard: Routes.Dashboard,
+				CodeAnalysis: Routes.CodeAnalysis,
 			}
 		},
 	},
+	mounted() {},
 })
 </script>
 
