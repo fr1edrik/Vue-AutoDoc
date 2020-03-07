@@ -16,7 +16,7 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{
-			path: '*',
+			path: '',
 			redirect: { name: Routes.Dashboard },
 		},
 		{

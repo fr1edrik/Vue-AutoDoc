@@ -3,7 +3,10 @@ import { mutations } from './mutations'
 import { getters } from './getters'
 
 const projectsState = {
-	state: { projects: {} },
+	state: {
+		projects: [],
+		activeProject: {},
+	},
 	actions,
 	mutations,
 	getters,

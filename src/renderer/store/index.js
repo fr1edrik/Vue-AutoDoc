@@ -4,14 +4,14 @@ import Vuex from 'vuex'
 import { createPersistedState, createSharedMutations } from 'vuex-electron'
 
 import modules from './modules'
-import projects from './modules/projects'
+import projectsState from './modules/projects'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	modules: {
-		projects,
+		projectsState,
 	},
-	plugins: [createPersistedState(), createSharedMutations()],
-	strict: process.env.NODE_ENV !== 'production',
+	// plugins: [createPersistedState(), createSharedMutations()],
+	// strict: process.env.NODE_ENV !== 'production',
 })
