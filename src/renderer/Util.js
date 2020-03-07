@@ -35,6 +35,7 @@ export default class Util {
 	}
 
 	static getProjectNames(callback) {
+		console.log('console')
 		this.readDir(this.target, res => callback(res))
 	}
 }

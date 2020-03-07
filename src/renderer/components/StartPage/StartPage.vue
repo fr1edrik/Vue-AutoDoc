@@ -14,15 +14,23 @@
 
 <script>
 import Vue from 'vue'
+import { mapGetters, mapac } from 'vuex'
+import { PROJECTS } from '@/store/modules/projects/getter-types.js'
+import { GET_PROJECTS } from '@/store/modules/projects/actions-types.js'
 import Util from '../../Util.js'
 
 export default Vue.extend({
 	data() {
-		return { projects: null }
+		return {}
+	},
+	computed: {
+		...mapGetters({
+			projects: PROJECTS,
+		}),
 	},
 	methods: {
 		updateProjects() {
-			Util.getProjectNames(projects => (this.projects = projects))
+			this.$store.dispatch(GET_PROJECTS)
 		},
 	},
 	mounted() {
