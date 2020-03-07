@@ -12,6 +12,9 @@
 import Vue from 'vue';
 import Util from '../../Util.js'
 import { parser } from '@vuese/parser'
+
+
+import {parseComponent} from 'vue-sfc-parser'
 // @Component({
 // 	components: {},
 // })
@@ -29,14 +32,18 @@ export default Vue.extend({
       }
   },
   mounted(){
-   const source = Util.fs.readFileSync('E:\\_Projects\\_template\\Electron\\my-todos\\src\\renderer\\components\\LandingPage.vue', 'utf-8')
+const pfad = 'E:/_Projects/_template/Electron/my-todos/src/renderer/components/Dashboard/Test.vue'
+const pfad2 = 'E:/_Projects/_template/Electron/my-todos/src/renderer/components/LandingPage.vue'
+    const source = Util.fs.readFileSync(pfad2, 'utf-8')
+  // console.log(source)
+   try {
+      const parserRes = parser(source)
 
-  try {
-  const parserRes = parser(source)
-  console.log(parserRes)
-} catch(e) {
-  console.error(e)
-}
+      console.log(parserRes)
+    } catch(e) {
+      console.error(e)
+    }
+
   }
 });
 </script>

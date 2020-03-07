@@ -8,6 +8,7 @@
 <script>
 import Vue from 'vue'
 const Sidebar = require('@/components/Sidebar').default
+
 export default Vue.extend({
 	components: { Sidebar },
 })

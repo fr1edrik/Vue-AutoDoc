@@ -3,7 +3,8 @@ export default class Util {
 	static root = './src/renderer/'
 	static cachePath = '/cache/cache.txt'
 
-	static target = 'E:\\_Projects\\_template\\Electron\\Targets'
+	static target = 'E:/_Projects/_template/Electron/Projects'
+
 	static componentsPath = 'src/components'
 
 	static writeFile(string) {
@@ -34,6 +35,6 @@ export default class Util {
 	}
 
 	static getProjectNames(callback) {
-		callback(this.readDir(this.target))
+		this.readDir(this.target, res => callback(res))
 	}
 }

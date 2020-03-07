@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard/Dashboard.vue'
 import CodeAnalysis from '@/components/CodeAnalysis/CodeAnalysis.vue'
+import StartPage from '@/components/StartPage/StartPage.vue'
 
 export const Routes = {
 	Dashboard: 'dashboard',
@@ -21,7 +22,8 @@ export default new Router({
 		{
 			path: Routes.Dashboard,
 			name: Routes.Dashboard,
-			component: Dashboard,
+			// component: Dashboard,
+			component: StartPage,
 		},
 		{
 			path: Routes.CodeAnalysis,

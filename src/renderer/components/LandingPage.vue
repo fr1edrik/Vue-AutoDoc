@@ -40,11 +40,19 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import SystemInformation from './LandingPage/SystemInformation'
 import * as fs from 'fs'
 export default {
 	name: 'landing-page',
 	components: { SystemInformation },
+	props: {
+		name: {
+			type: [String, Number],
+			required: true,
+			validator() {},
+		},
+	},
 	methods: {
 		open(link) {
 			this.$electron.shell.openExternal(link)

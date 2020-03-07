@@ -5289,6 +5289,11 @@ lodash.keysin@^3.0.0:
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
 
+lodash.mapvalues@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
+  integrity sha1-G6+lAF3p3W9PJmaMMMo3IwzJaJw=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -8495,6 +8500,13 @@ vue-router@^3.0.1:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.1.6.tgz#45f5a3a3843e31702c061dd829393554e4328f89"
   integrity sha512-GYhn2ynaZlysZMkFE5oCHRUTqE8BWs/a9YbKpNLi0i7xD6KG1EzDqpHQmv1F5gXjr8kL5iIVS8EOtRaVUEXTqA==
+
+vue-sfc-parser@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue-sfc-parser/-/vue-sfc-parser-0.1.2.tgz#f43dcb9eaa4deee1290c0c10dbbf0e06b04fbeab"
+  integrity sha512-fvYu4i5oxK4J25qYblmsotMINSY0KhP1LW/ElKaMin4CXQ2UqyjeUgAZaE2Zs1zYpIKGoEuMjEY+lmBghls1WQ==
+  dependencies:
+    lodash.mapvalues "^4.6.0"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
