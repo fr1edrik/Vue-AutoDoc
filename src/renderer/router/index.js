@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Dashboard from '@/components/Dashboard/Dashboard.vue'
 import CodeAnalysis from '@/components/CodeAnalysis/CodeAnalysis.vue'
 import StartPage from '@/components/StartPage/StartPage.vue'
@@ -11,9 +11,9 @@ export const Routes = {
 	CodeAnalysis: 'codeAnalysis',
 }
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
 	mode: 'history',
 	routes: [
 		{

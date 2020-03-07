@@ -4,9 +4,7 @@
 			<h4>Overview</h4>
 			<ul>
 				<li>
-					<router-link :to="{ name: MappedRoutes.Dashboard }"
-						>Dashboard</router-link
-					>
+					<router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
 				</li>
 				<li>
 					<router-link :to="{ name: MappedRoutes.CodeAnalysis }"
@@ -55,7 +53,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import '../../assets/styles/variables.scss';
 .sidebar {
-	width: 16em;
+	width: 12em;
 	height: 100%;
 	background-color: $black;
 

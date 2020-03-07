@@ -1,7 +1,9 @@
 <template>
 	<div id="app">
 		<sidebar />
-		<router-view />
+		<div id="content">
+			<router-view />
+		</div>
 	</div>
 </template>
 
@@ -20,7 +22,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 body,
 html {
 	margin: 0;
@@ -30,20 +32,20 @@ html {
 }
 
 #app {
-	display: flex;
-	//flex-direction: column-reverse;
 	height: 100%;
+	width: 100%;
 
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: black;
+	display: grid;
+	grid-template-areas: 'sidebar content';
 
-	.view {
-		width: 100%;
-		& * {
-			height: 100%;
-		}
+	grid-template-columns: 1fr 4fr;
+	sidebar {
+		grid-area: sidebar;
 	}
+}
+
+#conent {
+	margin: 0;
+	grid-area: content;
 }
 </style>
