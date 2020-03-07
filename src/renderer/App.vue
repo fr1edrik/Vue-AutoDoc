@@ -7,10 +7,16 @@
 
 <script>
 import Vue from 'vue'
-const Sidebar = require('@/components/Sidebar').default
+const Sidebar = require('@/components/Sidebar/Sidebar').default
+import { Routes } from '@/router/index'
 
 export default Vue.extend({
 	components: { Sidebar },
+	computed: {
+		// isStartPage() {
+		// 	return this.$routes.name === Routes.StartPage
+		// },
+	},
 })
 </script>
 

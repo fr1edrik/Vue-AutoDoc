@@ -5,6 +5,7 @@ import CodeAnalysis from '@/components/CodeAnalysis/CodeAnalysis.vue'
 import StartPage from '@/components/StartPage/StartPage.vue'
 
 export const Routes = {
+	StartPage: 'startpage',
 	Dashboard: 'dashboard',
 	ComponentDoc: 'componentDoc',
 	CodeAnalysis: 'codeAnalysis',
@@ -17,13 +18,17 @@ export default new Router({
 	routes: [
 		{
 			path: '',
-			redirect: { name: Routes.Dashboard },
+			redirect: { name: Routes.StartPage },
+		},
+		{
+			path: Routes.StartPage,
+			name: Routes.StartPage,
+			component: StartPage,
 		},
 		{
 			path: Routes.Dashboard,
 			name: Routes.Dashboard,
-			// component: Dashboard,
-			component: StartPage,
+			component: Dashboard,
 		},
 		{
 			path: Routes.CodeAnalysis,

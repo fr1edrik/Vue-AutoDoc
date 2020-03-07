@@ -36,7 +36,7 @@
 <script lang="ts">
 // import { Component, Vue } from 'vue-property-decorator'
 import Vue from 'Vue'
-import { Routes } from '../router/IRoutes'
+import { Routes } from '../../router/IRoutes'
 
 export default Vue.extend({
 	computed: {
@@ -53,7 +53,7 @@ export default Vue.extend({
 
 //
 <style scoped lang="scss">
-@import '../assets/styles/variables.scss';
+@import '../../assets/styles/variables.scss';
 .sidebar {
 	width: 16em;
 	height: 100%;

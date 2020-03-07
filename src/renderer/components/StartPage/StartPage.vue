@@ -14,7 +14,7 @@
 
 <script>
 import Vue from 'vue'
-import { mapGetters, mapac } from 'vuex'
+import { mapGetters } from 'vuex'
 import { PROJECTS } from '@/store/modules/projects/getter-types.js'
 import { GET_PROJECTS } from '@/store/modules/projects/actions-types.js'
 
@@ -29,7 +29,6 @@ export default Vue.extend({
 	},
 	methods: {
 		updateProjects() {
-			console.log('test')
 			this.$store.dispatch(GET_PROJECTS)
 		},
 	},
