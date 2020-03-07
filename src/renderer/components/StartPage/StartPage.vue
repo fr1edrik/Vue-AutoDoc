@@ -4,9 +4,7 @@
 
 		<ul>
 			<li v-for="(project, index) in projects" :key="index">
-				<a>
-					{{ project }}
-				</a>
+				<custom-button @click="log()">{{ project }}</custom-button>
 			</li>
 		</ul>
 	</div>
@@ -17,8 +15,10 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { PROJECTS } from '@/store/modules/projects/getter-types.js'
 import { GET_PROJECTS } from '@/store/modules/projects/actions-types.js'
+import CustomButton from '@/components/Generic/Buttons/CustomButton.vue'
 
 export default Vue.extend({
+	components: { CustomButton },
 	data() {
 		return {}
 	},
@@ -31,6 +31,9 @@ export default Vue.extend({
 		updateProjects() {
 			this.$store.dispatch(GET_PROJECTS)
 		},
+		log() {
+			console.log('test')
+		},
 	},
 	created() {
 		this.updateProjects()
@@ -38,4 +41,16 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import '../../assets/styles/variables.scss';
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	padding-bottom: $unit;
+
+	li {
+		margin-top: $unit-x0_5;
+	}
+}
+</style>

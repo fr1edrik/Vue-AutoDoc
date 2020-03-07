@@ -9,7 +9,7 @@
 
 <script>
 import Vue from 'vue'
-const Sidebar = require('@/components/Sidebar/Sidebar').default
+import Sidebar from '@/components/Sidebar/Sidebar'
 import { Routes } from '@/router/index'
 
 export default Vue.extend({

@@ -4,7 +4,9 @@
 			<h4>Overview</h4>
 			<ul>
 				<li>
-					<router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
+					<router-link :to="{ name: MappedRoutes.Dashboard }"
+						>Dashboard</router-link
+					>
 				</li>
 				<li>
 					<router-link :to="{ name: MappedRoutes.CodeAnalysis }"
@@ -32,7 +34,6 @@
 </template>
 
 <script lang="ts">
-// import { Component, Vue } from 'vue-property-decorator'
 import Vue from 'Vue'
 import { Routes } from '../../router/IRoutes'
 
