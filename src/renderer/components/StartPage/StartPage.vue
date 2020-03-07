@@ -4,17 +4,18 @@
 
 		<ul>
 			<li v-for="(project, index) in projects" :key="index">
-				<custom-button @click="log()">{{ project }}</custom-button>
+				<custom-button @click="goToProject(index)">{{ project }}</custom-button>
 			</li>
 		</ul>
 	</div>
 </template>
 
-<script>
+<script lang="js">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { PROJECTS } from '@/store/modules/projects/getter-types.js'
 import { GET_PROJECTS } from '@/store/modules/projects/actions-types.js'
+import { UPDATE_ACTIVE_PROJECT } from '@/store/modules/projects/mutation-types.js'
 import CustomButton from '@/components/Generic/Buttons/CustomButton.vue'
 
 export default Vue.extend({
@@ -30,6 +31,9 @@ export default Vue.extend({
 	methods: {
 		updateProjects() {
 			this.$store.dispatch(GET_PROJECTS)
+		},
+		goToProject(index) {
+			this.$store.commit(UPDATE_ACTIVE_PROJECT, this.projects[index])
 		},
 		log() {
 			console.log('test')

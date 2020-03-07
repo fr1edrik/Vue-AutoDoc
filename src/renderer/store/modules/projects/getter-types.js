@@ -1,1 +1,2 @@
 export const PROJECTS = 'PROJECTS'
+export const ACTIVE_PROJECT = 'ACTIVE_PROJECT'
