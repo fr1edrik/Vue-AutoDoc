@@ -1,6 +1,5 @@
 export default class Util {
 	static fs = require('fs')
-	static glob = require('glob')
 	static dirTree = require('directory-tree')
 	static root = './src/renderer/'
 	static cachePath = '/cache/cache.txt'

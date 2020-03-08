@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard/Dashboard.vue'
 import CodeAnalysis from '@/components/CodeAnalysis/CodeAnalysis.vue'
 import StartPage from '@/components/StartPage/StartPage.vue'
+import AbstractRoute from './AbstractRoute'
 
 export const Routes = {
 	StartPage: 'startpage',
@@ -11,29 +12,35 @@ export const Routes = {
 	CodeAnalysis: 'codeAnalysis',
 }
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-export default new VueRouter({
+export const router = new Router({
 	mode: 'history',
 	routes: [
 		{
-			path: '',
-			redirect: { name: Routes.StartPage },
-		},
-		{
-			path: Routes.StartPage,
-			name: Routes.StartPage,
-			component: StartPage,
-		},
-		{
-			path: Routes.Dashboard,
-			name: Routes.Dashboard,
-			component: Dashboard,
-		},
-		{
-			path: Routes.CodeAnalysis,
-			name: Routes.CodeAnalysis,
-			component: CodeAnalysis,
+			path: '/',
+			component: AbstractRoute,
+			children: [
+				{
+					path: '',
+					redirect: { name: Routes.StartPage },
+				},
+				{
+					path: Routes.StartPage,
+					name: Routes.StartPage,
+					component: StartPage,
+				},
+				{
+					path: Routes.Dashboard,
+					name: Routes.Dashboard,
+					component: Dashboard,
+				},
+				{
+					path: Routes.CodeAnalysis,
+					name: Routes.CodeAnalysis,
+					component: CodeAnalysis,
+				},
+			],
 		},
 	],
 	scrollBehavior(_to, _from, savedPosition) {

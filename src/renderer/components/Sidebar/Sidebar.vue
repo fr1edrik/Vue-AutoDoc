@@ -30,10 +30,9 @@
 <script lang="ts">
 import Vue from 'Vue'
 import { Routes } from '../../router/IRoutes'
-import VueRouter from 'vue-router'
 import Util from '../../Util'
 
-export default Vue.extend({
+export default {
 	data() {
 		return {
 			files: null,
@@ -55,7 +54,7 @@ export default Vue.extend({
 	mounted() {
 		this.updateFiles()
 	},
-})
+}
 </script>
 
 <style scoped lang="scss">
