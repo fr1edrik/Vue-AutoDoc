@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<sidebar />
+		<sidebar v-if="!isStartPage" />
 		<div id="content">
 			<router-view />
 		</div>
@@ -15,9 +15,9 @@ import { Routes } from '@/router/index'
 export default Vue.extend({
 	components: { Sidebar },
 	computed: {
-		// isStartPage() {
-		// 	return this.$routes.name === Routes.StartPage
-		// },
+		isStartPage() {
+			return this.$route.name === Routes.StartPage
+		},
 	},
 })
 </script>

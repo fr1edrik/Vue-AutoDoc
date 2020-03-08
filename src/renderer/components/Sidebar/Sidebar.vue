@@ -30,6 +30,8 @@
 <script lang="ts">
 import Vue from 'Vue'
 import { Routes } from '../../router/IRoutes'
+import { ACTIVE_PROJECT } from '../../store/modules/projects/getter-types.js'
+
 import Util from '../../Util'
 
 export default {
@@ -48,7 +50,10 @@ export default {
 	},
 	methods: {
 		updateFiles() {
-			Util.walkPath('monimo', res => (this.files = res))
+			Util.walkPath(
+				this.$store.getters[ACTIVE_PROJECT],
+				res => (this.files = res),
+			)
 		},
 	},
 	mounted() {

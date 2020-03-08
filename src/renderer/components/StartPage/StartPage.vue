@@ -1,12 +1,15 @@
 <template
 	><div>
 		<div>Startpage</div>
-
-		<ul>
-			<li v-for="(project, index) in projects" :key="index">
-				<custom-button @click="goToProject(index)">{{ project }}</custom-button>
-			</li>
-		</ul>
+		<div class="center-box">
+			<ul>
+				<li v-for="(project, index) in projects" :key="index">
+					<custom-button @click="goToProject(index)">{{
+						project
+					}}</custom-button>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
@@ -17,6 +20,8 @@ import { PROJECTS } from '@/store/modules/projects/getter-types.js'
 import { GET_PROJECTS } from '@/store/modules/projects/actions-types.js'
 import { UPDATE_ACTIVE_PROJECT } from '@/store/modules/projects/mutation-types.js'
 import CustomButton from '@/components/Generic/Buttons/CustomButton.vue'
+import { Routes } from '@/router/index'
+
 
 export default Vue.extend({
 	components: { CustomButton },
@@ -34,6 +39,8 @@ export default Vue.extend({
 		},
 		goToProject(index) {
 			this.$store.commit(UPDATE_ACTIVE_PROJECT, this.projects[index])
+
+			this.$router.push({name: Routes.Dashboard})
 		},
 		log() {
 			console.log('test')
@@ -56,5 +63,13 @@ ul {
 	li {
 		margin-top: $unit-x0_5;
 	}
+}
+
+.center-box {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 </style>
