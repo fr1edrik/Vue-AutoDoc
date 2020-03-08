@@ -1,11 +1,12 @@
 export default class Util {
 	static fs = require('fs')
+	static glob = require('glob')
 	static root = './src/renderer/'
 	static cachePath = '/cache/cache.txt'
 
-	static target = 'E:/_Projects/_template/Electron/Projects'
+	static target = 'E:/_Projects/_template/Electron/Projects/'
 
-	static componentsPath = 'src/components'
+	static componentsPath = 'monimo/src/components'
 
 	static writeFile(string) {
 		this.fs.writeFile(this.root + this.cachePath, string, err => {
@@ -31,6 +32,36 @@ export default class Util {
 				throw err
 			}
 			callback(files)
+		})
+	}
+
+	static walkPath(project = '', forFile) {
+		const pat = '**/components/**/*.vue'
+
+		const options = {
+			cwd: this.target + project,
+		}
+
+		this.glob(pat, options, (err, files) => {
+			if (err) {
+				console.log(err)
+			} else {
+				const remapped = files.map(path => {
+					const remBegin = /(src\/components\/)/
+
+					return path.split(remBegin)[2]
+				})
+				forFile(remapped)
+				// files.forEach(file => {
+				// 	this.fs.readFile(file, function(err, data) {
+				// 		if (err) {
+				// 			console.log(err)
+				// 		} else {
+				// 			forFile(data.toString())
+				// 		}
+				// 	})
+				// })
+			}
 		})
 	}
 

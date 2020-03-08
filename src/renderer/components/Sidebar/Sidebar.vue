@@ -29,6 +29,12 @@
 					<a>Methods</a>
 				</li>
 			</ul>
+			<h4>Componens</h4>
+			<ul class="components">
+				<li v-for="(file, key) in files" :key="key">
+					{{ file }}
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -36,8 +42,14 @@
 <script lang="ts">
 import Vue from 'Vue'
 import { Routes } from '../../router/IRoutes'
+import Util from '../../Util'
 
 export default Vue.extend({
+	data() {
+		return {
+			files: null,
+		}
+	},
 	computed: {
 		MappedRoutes() {
 			return {
@@ -46,7 +58,14 @@ export default Vue.extend({
 			}
 		},
 	},
-	mounted() {},
+	methods: {
+		updateFiles() {
+			Util.walkPath('monimo', res => (this.files = res))
+		},
+	},
+	mounted() {
+		this.updateFiles()
+	},
 })
 </script>
 
@@ -88,6 +107,10 @@ export default Vue.extend({
 
 		#active {
 			color: $white;
+		}
+
+		.components {
+			color: $blue;
 		}
 	}
 }
