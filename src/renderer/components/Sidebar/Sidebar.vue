@@ -14,25 +14,13 @@
 					>
 				</li>
 			</ul>
-			<h4>Test Component</h4>
-			<ul>
-				<li>
-					<a>Props</a>
-				</li>
-				<li>
-					<a>Events</a>
-				</li>
-				<li>
-					<a>Slots</a>
-				</li>
-				<li>
-					<a>Methods</a>
-				</li>
-			</ul>
 			<h4>Componens</h4>
 			<ul class="components">
-				<li v-for="(file, key) in files" :key="key">
-					{{ file }}
+				<li>
+					Root
+				</li>
+				<li v-for="(file, key) in files.dirs" :key="key">
+					{{ file.name }}
 				</li>
 			</ul>
 		</div>
@@ -42,6 +30,7 @@
 <script lang="ts">
 import Vue from 'Vue'
 import { Routes } from '../../router/IRoutes'
+import VueRouter from 'vue-router'
 import Util from '../../Util'
 
 export default Vue.extend({
@@ -69,7 +58,6 @@ export default Vue.extend({
 })
 </script>
 
-//
 <style scoped lang="scss">
 @import '../../assets/styles/variables.scss';
 .sidebar {

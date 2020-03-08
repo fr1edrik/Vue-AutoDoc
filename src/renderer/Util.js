@@ -1,6 +1,7 @@
 export default class Util {
 	static fs = require('fs')
 	static glob = require('glob')
+	static dirTree = require('directory-tree')
 	static root = './src/renderer/'
 	static cachePath = '/cache/cache.txt'
 
@@ -36,33 +37,18 @@ export default class Util {
 	}
 
 	static walkPath(project = '', forFile) {
-		const pat = '**/components/**/*.vue'
+		let map = this.dirTree(this.target + project + '/src/components/', {
+			extensions: /\.(vue)$/,
+		})
 
-		const options = {
-			cwd: this.target + project,
+		const recursiveWalking = () => {}
+
+		const newObject = {
+			root: map.children.filter(item => item.type === 'file'),
+			dirs: map.children.filter(item => item.type === 'directory'),
 		}
 
-		this.glob(pat, options, (err, files) => {
-			if (err) {
-				console.log(err)
-			} else {
-				const remapped = files.map(path => {
-					const remBegin = /(src\/components\/)/
-
-					return path.split(remBegin)[2]
-				})
-				forFile(remapped)
-				// files.forEach(file => {
-				// 	this.fs.readFile(file, function(err, data) {
-				// 		if (err) {
-				// 			console.log(err)
-				// 		} else {
-				// 			forFile(data.toString())
-				// 		}
-				// 	})
-				// })
-			}
-		})
+		forFile(newObject)
 	}
 
 	static getProjectNames(callback) {
