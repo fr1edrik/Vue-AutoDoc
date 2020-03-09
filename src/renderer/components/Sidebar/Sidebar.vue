@@ -8,19 +8,33 @@
 						>Dashboard</router-link
 					>
 				</li>
-				<li>
+				<!-- <li>
 					<router-link :to="{ name: MappedRoutes.CodeAnalysis }"
 						>Code Analysis</router-link
 					>
-				</li>
+				</li> -->
 			</ul>
 			<h4>Componens</h4>
 			<ul class="components">
 				<li>
-					Root
+					<router-link
+						class="uppercase"
+						:to="{
+							name: MappedRoutes.CodeAnalysis,
+							params: { path: { children: files.root } },
+						}"
+						>Root</router-link
+					>
 				</li>
 				<li v-for="(file, key) in files.dirs" :key="key">
-					{{ file.name }}
+					<router-link
+						class="uppercase"
+						:to="{
+							name: MappedRoutes.CodeAnalysis,
+							params: { path: file },
+						}"
+						>{{ file.name }}</router-link
+					>
 				</li>
 			</ul>
 		</div>
@@ -54,6 +68,7 @@ export default {
 				this.$store.getters[ACTIVE_PROJECT],
 				res => (this.files = res),
 			)
+			console.log(this.files)
 		},
 	},
 	mounted() {
@@ -104,6 +119,10 @@ export default {
 		.components {
 			color: $blue;
 		}
+	}
+
+	.uppercase {
+		text-transform: capitalize;
 	}
 }
 </style>

@@ -10,11 +10,7 @@
 <script lang="js">
 // import { Vue, Component } from 'vue-property-decorator'
 import Vue from 'vue';
-import Util from '../../Util.js'
-import { parser } from '@vuese/parser'
 
-
-import {parseComponent} from 'vue-sfc-parser'
 // @Component({
 // 	components: {},
 // })

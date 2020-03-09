@@ -1,3 +1,4 @@
+import { parser } from '@vuese/parser'
 export default class Util {
 	static fs = require('fs')
 	static dirTree = require('directory-tree')
@@ -40,8 +41,6 @@ export default class Util {
 			extensions: /\.(vue)$/,
 		})
 
-		const recursiveWalking = () => {}
-
 		const newObject = {
 			root: map.children.filter(item => item.type === 'file'),
 			dirs: map.children.filter(item => item.type === 'directory'),
@@ -52,5 +51,15 @@ export default class Util {
 
 	static getProjectNames(callback) {
 		this.readDir(this.target, res => callback(res))
+	}
+
+	static parseComponent(path) {
+		const source = this.fs.readFileSync(path, 'utf-8')
+		// console.log(source)
+		try {
+			return parser(source)
+		} catch (e) {
+			console.error(e)
+		}
 	}
 }
