@@ -4,9 +4,12 @@
 		<div class="center-box">
 			<ul>
 				<li v-for="(project, index) in projects" :key="index">
-					<custom-button @click="goToProject(index)">{{
-						project
-					}}</custom-button>
+					<custom-button
+						size="lg"
+						variant="primary"
+						@click="goToProject(index)"
+						>{{ project }}</custom-button
+					>
 				</li>
 			</ul>
 		</div>

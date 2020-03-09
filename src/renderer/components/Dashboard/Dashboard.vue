@@ -1,9 +1,17 @@
 <template>
 	<div>
 		<h1>Dashboard</h1>
-		<div class="card-container" v-for="(card, index) in cards" :key="index">
-			{{ card }}
-		</div>
+		<b-container>
+			<b-row>
+				<b-col v-for="(card, index) in cards" :key="index">
+					<b-card>
+						<b-card-text>
+							{{ card }}
+						</b-card-text>
+					</b-card>
+				</b-col>
+			</b-row>
+		</b-container>
 	</div>
 </template>
 
@@ -28,17 +36,6 @@ export default Vue.extend({
       }
   },
   mounted(){
-// const pfad = 'E:/_Projects/_template/Electron/my-todos/src/renderer/components/Dashboard/Test.vue'
-// const pfad2 = 'E:/_Projects/_template/Electron/my-todos/src/renderer/components/LandingPage.vue'
-//     const source = Util.fs.readFileSync(pfad2, 'utf-8')
-//   // console.log(source)
-//    try {
-//       const parserRes = parser(source)
-
-//       console.log(parserRes)
-//     } catch(e) {
-//       console.error(e)
-//     }
 
   }
 });
@@ -46,7 +43,9 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 @import '@/assets/styles/variables.scss';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
 .card-container {
-	background-color: $white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
