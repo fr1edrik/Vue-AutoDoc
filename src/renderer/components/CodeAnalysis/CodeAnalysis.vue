@@ -16,29 +16,18 @@
 							<th>Type</th>
 							<th>Type Description</th>
 							<th>Required</th>
-							<td>Default</td>
+							<th>Default</th>
 							<th>Validator</th>
 							<th>Validator Description</th>
 						</tr>
-						<tr
-							v-for="({
-								name,
-								typeDesc,
-								type,
-								required,
-								validator,
-								validatorDesc,
-							},
-							j) in comp.props"
-							:key="j"
-						>
-							<td>{{ name }}</td>
-							<td>{{ type }}</td>
-							<td>{{ typeDesc }}</td>
-							<td>{{ required }}</td>
-							<td>Default</td>
-							<td>{{ validator }}</td>
-							<td>{{ validatorDesc }}</td>
+						<tr v-for="(item, j) in comp.props" :key="j">
+							<td>{{ item.name }}</td>
+							<td>{{ item.type }}</td>
+							<td>{{ item.typeDesc }}</td>
+							<td>{{ item.required ? true : false }}</td>
+							<td>{{ item.default }}</td>
+							<td>{{ item.validator }}</td>
+							<td>{{ item.validatorDesc }}</td>
 						</tr>
 					</table>
 				</div>

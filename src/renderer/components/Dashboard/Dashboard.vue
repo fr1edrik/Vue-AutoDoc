@@ -18,7 +18,8 @@
 <script lang="js">
 // import { Vue, Component } from 'vue-property-decorator'
 import Vue from 'vue';
-
+import Util from '../../Util'
+import { ACTIVE_PROJECT } from '@/store/modules/projects/getter-types.js'
 // @Component({
 // 	components: {},
 // })
@@ -36,7 +37,7 @@ export default Vue.extend({
       }
   },
   mounted(){
-
+	Util.fetchRelation(this.$store.getters[ACTIVE_PROJECT], res => console.log(res))
   }
 });
 </script>

@@ -62,4 +62,32 @@ export default class Util {
 			console.error(e)
 		}
 	}
+
+	static fetchRelation(project, callback) {
+		let glob = require('glob')
+		const { parseComponent } = require('vue-sfc-parser')
+
+		let options = {
+			cwd: `${this.target}${project}`,
+		}
+
+		glob('**/*.vue', options, (er, files) => {
+			let obj = []
+			files.forEach(file => {
+				const filepath = options.cwd + '/' + file
+
+				const readFile = this.fs.readFileSync(filepath, 'utf-8')
+
+				const comp = parseComponent(readFile).script
+				const filename = require('path').basename(file)
+
+				obj.push({
+					name: filename,
+					code: comp,
+				})
+			})
+
+			callback(obj)
+		})
+	}
 }

@@ -18,7 +18,7 @@ export default Vue.extend({
 @import '../../../assets/styles/variables.scss';
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
-button {
-	// padding: $unit $unit-x0_5;
-}
+// button {
+// 	// padding: $unit $unit-x0_5;
+// }
 </style>
