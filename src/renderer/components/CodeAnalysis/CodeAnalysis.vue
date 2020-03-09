@@ -154,12 +154,9 @@ export default Vue.extend({
 		updateDoc() {
 			this.path.children.forEach(v => {
 				const comp = Util.parseComponent(v.path)
-				console.log(v)
 
 				this.components.push({ ...comp, componentName: v.name })
 			})
-
-			console.log(this.components)
 		},
 	},
 	mounted() {
