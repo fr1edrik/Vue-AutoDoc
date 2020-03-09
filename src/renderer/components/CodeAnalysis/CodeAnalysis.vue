@@ -13,17 +13,32 @@
 					<table style="width:100%">
 						<tr>
 							<th>Name</th>
-							<th>Description</th>
 							<th>Type</th>
+							<th>Type Description</th>
 							<th>Required</th>
-							<th>Default</th>
+							<td>Default</td>
+							<th>Validator</th>
+							<th>Validator Description</th>
 						</tr>
-						<tr v-for="({ name, type, required }, j) in comp.props" :key="j">
+						<tr
+							v-for="({
+								name,
+								typeDesc,
+								type,
+								required,
+								validator,
+								validatorDesc,
+							},
+							j) in comp.props"
+							:key="j"
+						>
 							<td>{{ name }}</td>
-							<td>Some description</td>
 							<td>{{ type }}</td>
+							<td>{{ typeDesc }}</td>
 							<td>{{ required }}</td>
 							<td>Default</td>
+							<td>{{ validator }}</td>
+							<td>{{ validatorDesc }}</td>
 						</tr>
 					</table>
 				</div>
@@ -36,9 +51,10 @@
 							<th>Arguments Description</th>
 							<th>Is Sync</th>
 							<th>Sync Prop</th>
+							<th>Describe</th>
 						</tr>
 						<tr
-							v-for="({ name, argumentsDesc, isSync, syncProp },
+							v-for="({ name, argumentsDesc, isSync, syncProp, describe },
 							j) in comp.events"
 							:key="j"
 						>
@@ -46,6 +62,7 @@
 							<td>{{ argumentsDesc }}</td>
 							<td>{{ isSync }}</td>
 							<td>{{ syncProp }}</td>
+							<td>{{ describe }}</td>
 						</tr>
 					</table>
 				</div>
@@ -56,17 +73,58 @@
 						<tr>
 							<th>Name</th>
 							<th>Description</th>
+							<th>Backer Description</th>
 							<th>Scoped</th>
 							<th>Target</th>
 						</tr>
 						<tr
-							v-for="({ name, describe, scoped, target }, j) in comp.slots"
+							v-for="({ name, describe, backerDesc, scoped, target },
+							j) in comp.slots"
 							:key="j"
 						>
 							<td>{{ name }}</td>
 							<td>{{ describe }}</td>
+							<td>{{ backerDesc }}</td>
 							<td>{{ scoped }}</td>
 							<td>{{ target }}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div v-if="comp.methods">
+					<h5>Methods</h5>
+					<table style="width:100%">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Scoped</th>
+						</tr>
+						<tr
+							v-for="({ name, describe, argumentsDesc }, j) in comp.slots"
+							:key="j"
+						>
+							<td>{{ name }}</td>
+							<td>{{ describe }}</td>
+							<td>{{ argumentsDesc }}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div v-if="comp.mixIns">
+					<h5>Mixins</h5>
+					<table style="width:100%">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Scoped</th>
+						</tr>
+						<tr
+							v-for="({ name, describe, argumentsDesc }, j) in comp.slots"
+							:key="j"
+						>
+							<td>{{ name }}</td>
+							<td>{{ describe }}</td>
+							<td>{{ argumentsDesc }}</td>
 						</tr>
 					</table>
 				</div>
