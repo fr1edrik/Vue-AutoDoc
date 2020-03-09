@@ -16,12 +16,13 @@
 			</ul>
 			<h4>Componens</h4>
 			<ul class="components">
-				<li>
+				<li v-if="files.root.length > 0">
 					<router-link
 						class="uppercase"
 						:to="{
 							name: MappedRoutes.CodeAnalysis,
 							params: { path: { children: files.root } },
+							props: { name: 'root' },
 						}"
 						>Root</router-link
 					>
@@ -32,6 +33,7 @@
 						:to="{
 							name: MappedRoutes.CodeAnalysis,
 							params: { path: file },
+							props: { name: file.name },
 						}"
 						>{{ file.name }}</router-link
 					>

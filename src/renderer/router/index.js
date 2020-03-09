@@ -36,14 +36,14 @@ export const router = new Router({
 					component: Dashboard,
 				},
 				{
-					path: Routes.CodeAnalysis,
+					path: 'codeAnalysis/:name',
 					name: Routes.CodeAnalysis,
 					component: CodeAnalysis,
+					props: true,
 				},
 			],
 		},
 	],
-	scrollBehavior(_to, _from, savedPosition) {
-		return savedPosition || { x: 0, y: 0 }
-	},
+
+	onSameUrlNavigation: 'reload',
 })
