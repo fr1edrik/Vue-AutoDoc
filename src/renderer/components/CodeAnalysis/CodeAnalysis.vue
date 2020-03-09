@@ -1,6 +1,6 @@
 <template
 	><div>
-		<h5>{{ name }}</h5>
+		<h5>{{ dirName }}</h5>
 		<b-card
 			class="container"
 			v-for="(comp, i) in components"
@@ -85,17 +85,11 @@ export default Vue.extend({
 		}
 	},
 	props: {
-		name: String,
+		dirName: String,
 	},
 	computed: {
 		path() {
 			return this.$route.params.path
-		},
-	},
-	watch: {
-		path(newVal) {
-			console.log(newVal)
-			// this.$forceUpdate()
 		},
 	},
 	methods: {
@@ -124,7 +118,7 @@ export default Vue.extend({
 .container {
 	margin: $unit-x3 $unit-x0_5;
 	background-color: white;
-
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	b-card-text {
 		background-color: white;
 	}

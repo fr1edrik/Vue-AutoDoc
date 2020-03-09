@@ -36,7 +36,7 @@ export const router = new Router({
 					component: Dashboard,
 				},
 				{
-					path: 'codeAnalysis/:name',
+					path: 'codeAnalysis/:dirName',
 					name: Routes.CodeAnalysis,
 					component: CodeAnalysis,
 					props: true,
@@ -44,6 +44,4 @@ export const router = new Router({
 			],
 		},
 	],
-
-	onSameUrlNavigation: 'reload',
 })

@@ -21,8 +21,7 @@
 						class="uppercase"
 						:to="{
 							name: MappedRoutes.CodeAnalysis,
-							params: { path: { children: files.root } },
-							props: { name: 'root' },
+							params: { path: { children: files.root }, dirName: 'root' },
 						}"
 						>Root</router-link
 					>
@@ -32,8 +31,7 @@
 						class="uppercase"
 						:to="{
 							name: MappedRoutes.CodeAnalysis,
-							params: { path: file },
-							props: { name: file.name },
+							params: { path: file, dirName: file.name },
 						}"
 						>{{ file.name }}</router-link
 					>
