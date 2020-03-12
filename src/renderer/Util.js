@@ -31,7 +31,7 @@ export default class Util {
 	}
 
 	static writeFile(string, val) {
-		const path = thisrootPath + string
+		const path = this.rootPath + string
 
 		console.log(path)
 

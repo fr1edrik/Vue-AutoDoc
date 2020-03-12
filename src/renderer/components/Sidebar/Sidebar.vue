@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import Vue from 'Vue'
-import { Routes } from '../../router/IRoutes'
+import { Routes } from '../../router'
 import { ACTIVE_PROJECT } from '../../store/modules/projects/getter-types.js'
 
 import Util from '../../Util'
