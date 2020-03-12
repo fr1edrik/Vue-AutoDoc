@@ -41,6 +41,7 @@ export default Vue.extend({
 	methods: {
 		updateProjectsDirPath(e){
 			this.$store.commit(UPDATE_PROJECTS_DIR_PATH, e)
+			this.updateProjects()
 		},
 		updateProjects() {
 			this.$store.dispatch(GET_PROJECTS)

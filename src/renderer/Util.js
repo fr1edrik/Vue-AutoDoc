@@ -1,13 +1,16 @@
 import { parser } from '@vuese/parser'
+import store from '@/store/index'
+import { PROJECTS_DIR_PATH } from '@/store/modules/projects/getter-types.js'
+
 export default class Util {
 	static fs = require('fs')
 	static dirTree = require('directory-tree')
 	static root = './src/renderer/'
-	static cachePath = '/cache/cache.txt'
+	static cachePath = '/cache/'
 
-	static target = 'E:/_Projects/_template/Electron/Projects/'
-
-	static componentsPath = 'monimo/src/components'
+	static get target() {
+		return store.getters[PROJECTS_DIR_PATH]
+	}
 
 	static writeFile(string) {
 		this.fs.writeFile(this.root + this.cachePath, string, err => {
@@ -37,7 +40,7 @@ export default class Util {
 	}
 
 	static walkPath(project = '', forFile) {
-		let map = this.dirTree(this.target + project + '/src/components/', {
+		let map = this.dirTree(this.target + '/' + project + '/src/components/', {
 			extensions: /\.(vue)$/,
 		})
 
