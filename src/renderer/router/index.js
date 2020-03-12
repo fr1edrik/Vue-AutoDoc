@@ -20,6 +20,7 @@ export const router = new Router({
 		{
 			path: '/',
 			component: AbstractRoute,
+			meta: { linkText: 'Home' },
 			children: [
 				{
 					path: '',
@@ -29,17 +30,20 @@ export const router = new Router({
 					path: Routes.StartPage,
 					name: Routes.StartPage,
 					component: StartPage,
+					meta: { linkText: Routes.StartPage },
 				},
 				{
 					path: Routes.Dashboard,
 					name: Routes.Dashboard,
 					component: Dashboard,
+					meta: { linkText: Routes.Dashboard },
 				},
 				{
 					path: 'codeAnalysis/:dirName',
 					name: Routes.CodeAnalysis,
 					component: CodeAnalysis,
 					props: true,
+					meta: { linkText: Routes.CodeAnalysis },
 				},
 			],
 		},

@@ -22,7 +22,7 @@
 					>
 				</li> -->
 			</ul>
-			<h4>Componens</h4>
+			<h4>Code Analysis</h4>
 			<ul class="components">
 				<li v-if="files.root.length > 0">
 					<router-link
