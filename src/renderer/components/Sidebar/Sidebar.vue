@@ -1,6 +1,14 @@
 <template>
 	<div class="sidebar">
 		<div class="inner">
+			<h1>{{ activeProject }}</h1>
+			<router-link
+				class="uppercase"
+				:to="{
+					name: MappedRoutes.StartPage,
+				}"
+				>Change Project</router-link
+			>
 			<h4>Overview</h4>
 			<ul>
 				<li>
@@ -59,7 +67,11 @@ export default {
 			return {
 				Dashboard: Routes.Dashboard,
 				CodeAnalysis: Routes.CodeAnalysis,
+				StartPage: Routes.StartPage,
 			}
+		},
+		activeProject() {
+			return this.$store.getters[ACTIVE_PROJECT]
 		},
 	},
 	methods: {

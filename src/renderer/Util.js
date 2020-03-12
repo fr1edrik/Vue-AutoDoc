@@ -5,22 +5,44 @@ import { PROJECTS_DIR_PATH } from '@/store/modules/projects/getter-types.js'
 export default class Util {
 	static fs = require('fs')
 	static dirTree = require('directory-tree')
-	static root = './src/renderer/'
-	static cachePath = '/cache/'
+
+	static rootPath = './src/'
+	static rootRenderPath = './src/renderer/'
+	static cachePath = './src/cache/'
 
 	static get target() {
-		return store.getters[PROJECTS_DIR_PATH]
+		// return store.getters[PROJECTS_DIR_PATH]
+		const storePath = store.getters[PROJECTS_DIR_PATH]
+		if (storePath) {
+			return storePath
+		}
+
+		const settings = this.fs.readFileSync(
+			`${this.rootPath}settings.json`,
+			'utf8',
+		)
+
+		if (settings) {
+			const settingsAsJson = JSON.parse(settings)
+			return settingsAsJson['PROJECTS_DIR_PATH']
+		} else {
+			return ''
+		}
 	}
 
-	static writeFile(string) {
-		this.fs.writeFile(this.root + this.cachePath, string, err => {
+	static writeFile(string, val) {
+		const path = thisrootPath + string
+
+		console.log(path)
+
+		this.fs.writeFile(path, val, 'utf8', err => {
 			if (err) return console.log(err)
 		})
 		console.log('The file was saved!')
 	}
 
 	static readFile(path, callback) {
-		this.fs.readFile(this.root + path, function read(err, data) {
+		this.fs.readFile(this.rootRenderPath + path, function read(err, data) {
 			if (err) {
 				throw err
 			}
