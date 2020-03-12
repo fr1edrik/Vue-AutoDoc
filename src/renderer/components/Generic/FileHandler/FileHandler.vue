@@ -1,22 +1,23 @@
 <template>
-	<div>
-		<input
-			type="file"
-			id="ctrl"
-			@change="handleFileChange"
-			webkitdirectory
-			directory
-			multiple
-		/>
-	</div>
+	<customButton variant="outline-primary" @click="handleClick">
+		Select Projects Directory
+	</customButton>
 </template>
 
 <script>
 import Vue from 'vue'
+import { remote } from 'electron'
+import CustomButton from '@/components/Generic/Buttons/CustomButton.vue'
 export default Vue.extend({
+	components: {
+		CustomButton,
+	},
 	methods: {
-		handleFileChange(e) {
-			console.log(document.getElementById('ctrl').value)
+		handleClick() {
+			let path = remote.dialog.showOpenDialog({ properties: ['openDirectory'] })
+			if (path.length > 0) {
+				this.$emit('click', path[0])
+			}
 		},
 	},
 })

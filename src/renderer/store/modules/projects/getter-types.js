@@ -1,2 +1,3 @@
 export const PROJECTS = 'PROJECTS'
 export const ACTIVE_PROJECT = 'ACTIVE_PROJECT'
+export const PROJECTS_DIR_PATH = 'PROJECTS_DIR_PATH'

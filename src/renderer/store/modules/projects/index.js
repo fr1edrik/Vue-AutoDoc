@@ -4,6 +4,7 @@ import { getters } from './getters'
 
 const projectsState = {
 	state: {
+		projectsDirPath: '',
 		projects: [],
 		activeProject: {},
 	},

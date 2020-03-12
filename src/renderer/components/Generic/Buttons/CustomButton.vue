@@ -1,5 +1,5 @@
 <template>
-	<b-button :size="size" block @click="$emit('click')">
+	<b-button :variant="variant" :size="size" block @click="$emit('click')">
 		<slot></slot>
 	</b-button>
 </template>
