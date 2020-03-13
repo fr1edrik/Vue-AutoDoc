@@ -6,7 +6,8 @@
 				<b-breadcrumb-item
 					v-for="({ meta, name }, index) in routePath"
 					:key="index"
-					:to="{ name }"
+					:to="{ name: name ? name : 'dashboard' }"
+					:active="routePath.length - 1 === index"
 					>{{ meta.linkText }}</b-breadcrumb-item
 				>
 			</b-breadcrumb>
