@@ -117,12 +117,25 @@
 						</tr>
 					</table>
 				</div>
-				<b-textarea
-					readonly
-					rows="10"
-					lazy-formatter
-					:value="getCode(comp.path)"
-				></b-textarea>
+				<div>
+					<b-button
+						:class="visible[i] ? null : 'collapsed'"
+						:aria-expanded="visible[i] ? 'true' : 'false'"
+						aria-controls="collapse-4"
+						@click="visible[i] = !visible[i]"
+					>
+						View Sourcecode
+					</b-button>
+
+					<b-collapse v-model="visible[i]" id="collapse-3">
+						<b-textarea
+							readonly
+							rows="10"
+							lazy-formatter
+							:value="getCode(comp.path)"
+						></b-textarea>
+					</b-collapse>
+				</div>
 			</b-card-text>
 		</b-card>
 	</div>
@@ -135,6 +148,7 @@ export default Vue.extend({
 	data() {
 		return {
 			components: [],
+			visible: {},
 		}
 	},
 	props: {
