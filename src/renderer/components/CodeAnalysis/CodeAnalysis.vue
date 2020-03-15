@@ -117,6 +117,12 @@
 						</tr>
 					</table>
 				</div>
+				<b-textarea
+					readonly
+					rows="10"
+					lazy-formatter
+					:value="getCode(comp.path)"
+				></b-textarea>
 			</b-card-text>
 		</b-card>
 	</div>
@@ -144,12 +150,28 @@ export default Vue.extend({
 			this.path.children.forEach(v => {
 				const comp = Util.parseComponent(v.path)
 
-				this.components.push({ ...comp, componentName: v.name })
+				this.components.push({ ...comp, componentName: v.name, path: v.path })
 			})
+		},
+		getCode: value => {
+			if (!value) return ''
+
+			const file = Util.fs.readFileSync(value, 'utf8').replace('', '')
+
+			return file
 		},
 	},
 	mounted() {
 		this.updateDoc()
+	},
+	filters: {
+		getCode: value => {
+			if (!value) return ''
+
+			const file = Util.fs.readFileSync(value, 'utf8').replace('', '')
+
+			return file
+		},
 	},
 })
 </script>
@@ -184,5 +206,9 @@ th {
 
 tr:nth-child(even) {
 	background-color: #dddddd;
+}
+
+.code {
+	overflow: scroll;
 }
 </style>

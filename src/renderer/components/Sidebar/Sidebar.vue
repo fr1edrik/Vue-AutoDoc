@@ -2,13 +2,17 @@
 	<div class="sidebar">
 		<div class="inner">
 			<h1>{{ activeProject }}</h1>
-			<router-link
-				class="uppercase"
-				:to="{
-					name: MappedRoutes.StartPage,
-				}"
-				>Change Project</router-link
-			>
+			<ul>
+				<li>
+					<router-link
+						class="uppercase"
+						:to="{
+							name: MappedRoutes.StartPage,
+						}"
+						>Change Project</router-link
+					>
+				</li>
+			</ul>
 			<h4>Overview</h4>
 			<ul>
 				<li>
@@ -16,11 +20,6 @@
 						>Dashboard</router-link
 					>
 				</li>
-				<!-- <li>
-					<router-link :to="{ name: MappedRoutes.CodeAnalysis }"
-						>Code Analysis</router-link
-					>
-				</li> -->
 			</ul>
 			<h4>Code Analysis</h4>
 			<ul class="components">
