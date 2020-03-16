@@ -11,6 +11,15 @@
 					</b-card>
 				</b-col>
 			</b-row>
+			<b-row>
+				<b-col>
+					<b-card title="Correlation" class="mb-2">
+						<b-card-text>
+							<canvas id="myChart" width="400" height="400"></canvas>
+						</b-card-text>
+					</b-card>
+				</b-col>
+			</b-row>
 		</b-container>
 	</div>
 </template>
@@ -21,6 +30,8 @@ import Vue from 'vue';
 import Util from '../../Util'
 import { ACTIVE_PROJECT, PROJECTS_DIR_PATH } from '@/store/modules/projects/getter-types.js'
 import getFolderSize from 'get-folder-size'
+
+import { Chart } from "chart.js";
 // @Component({
 // 	components: {},
 // })
@@ -34,7 +45,6 @@ export default Vue.extend({
   },
   data() {
       return {
-		cards: [{ c: 1 }, { c: 2 }, { c: 3 }],
 		projectSize: ""
       }
   },
@@ -42,17 +52,45 @@ export default Vue.extend({
 	  getProjectSize(){
 		  const projName =  this.$store.getters[ACTIVE_PROJECT]
 		  const projPath = this.$store.getters[PROJECTS_DIR_PATH]
-		//  const target = projPath+projName
 
 		getFolderSize(projPath+'/'+projName, (err,size)=>{
 			if (err) { throw err; }
 			const res = (size / 1024 / 1024).toFixed(2) + ' MB'
 			this.projectSize = res
 		})
-
+	  },
+	  updateChart(){
+		  var ctx = document.getElementById('myChart').getContext('2d');
+		  var myChart = new Chart(ctx, {
+			  type: 'scatter',
+				data: {
+					datasets: [{
+						label: 'Scatter Dataset',
+						data: [{
+							x: -10,
+							y: 0
+						}, {
+							x: 0,
+							y: 10
+						}, {
+							x: 10,
+							y: 5
+						}]
+					}]
+				},
+				options: {
+					scales: {
+						xAxes: [{
+							type: 'linear',
+							position: 'bottom'
+						}]
+					}
+				}
+			});
 	  }
   },
   mounted(){
+	  this.updateChart();
 	  this.getProjectSize()
 	Util.fetchRelation(this.$store.getters[ACTIVE_PROJECT], res => console.log(res))
   }
