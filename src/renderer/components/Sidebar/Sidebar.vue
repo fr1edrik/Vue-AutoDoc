@@ -79,7 +79,7 @@ export default {
 				this.$store.getters[ACTIVE_PROJECT],
 				res => (this.files = res),
 			)
-			console.log(this.files)
+			// console.log(this.files)
 		},
 	},
 	mounted() {
