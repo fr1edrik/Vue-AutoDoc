@@ -1,6 +1,7 @@
 import { parser } from '@vuese/parser'
 import store from '@/store/index'
 import { PROJECTS_DIR_PATH } from '@/store/modules/projects/getter-types.js'
+import { UPDATE_PROJECTS_DIR_PATH } from '@/store/modules/projects/mutation-types.js'
 
 export default class Util {
 	static fs = require('fs')
@@ -24,7 +25,11 @@ export default class Util {
 
 		if (settings) {
 			const settingsAsJson = JSON.parse(settings)
-			return settingsAsJson['PROJECTS_DIR_PATH']
+			store.commit(
+				UPDATE_PROJECTS_DIR_PATH,
+				settingsAsJson['PROJECTS_DIR_PATH'],
+			)
+			return settingsAsJson[PROJECTS_DIR_PATH]
 		} else {
 			return ''
 		}

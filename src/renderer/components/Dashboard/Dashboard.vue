@@ -3,10 +3,10 @@
 		<h1>Dashboard</h1>
 		<b-container>
 			<b-row>
-				<b-col v-for="(card, index) in cards" :key="index">
-					<b-card>
+				<b-col>
+					<b-card title="Project Size" class="mb-2">
 						<b-card-text>
-							{{ card }}
+							{{ projectSize }}
 						</b-card-text>
 					</b-card>
 				</b-col>
@@ -19,7 +19,8 @@
 // import { Vue, Component } from 'vue-property-decorator'
 import Vue from 'vue';
 import Util from '../../Util'
-import { ACTIVE_PROJECT } from '@/store/modules/projects/getter-types.js'
+import { ACTIVE_PROJECT, PROJECTS_DIR_PATH } from '@/store/modules/projects/getter-types.js'
+import getFolderSize from 'get-folder-size'
 // @Component({
 // 	components: {},
 // })
@@ -33,10 +34,26 @@ export default Vue.extend({
   },
   data() {
       return {
-        cards: [{ c: 1 }, { c: 2 }, { c: 3 }]
+		cards: [{ c: 1 }, { c: 2 }, { c: 3 }],
+		projectSize: ""
       }
   },
+  methods:{
+	  getProjectSize(){
+		  const projName =  this.$store.getters[ACTIVE_PROJECT]
+		  const projPath = this.$store.getters[PROJECTS_DIR_PATH]
+		//  const target = projPath+projName
+
+		getFolderSize(projPath+'/'+projName, (err,size)=>{
+			if (err) { throw err; }
+			const res = (size / 1024 / 1024).toFixed(2) + ' MB'
+			this.projectSize = res
+		})
+
+	  }
+  },
   mounted(){
+	  this.getProjectSize()
 	Util.fetchRelation(this.$store.getters[ACTIVE_PROJECT], res => console.log(res))
   }
 });

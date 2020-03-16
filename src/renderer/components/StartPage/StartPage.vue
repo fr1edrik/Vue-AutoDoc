@@ -58,6 +58,9 @@ export default Vue.extend({
 	created() {
 		this.updateProjects()
 	},
+	mounted(){
+
+	}
 })
 </script>
 
