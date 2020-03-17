@@ -129,11 +129,11 @@ export default class Util {
 
 				obj.push({
 					name: filename,
-					code: filtered,
+					relation: filtered,
 				})
 			})
 
-			obj = obj.filter(o => o.code)
+			obj = obj.filter(o => o.relation)
 
 			callback(obj)
 		})

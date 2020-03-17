@@ -32,12 +32,6 @@ import { ACTIVE_PROJECT, PROJECTS_DIR_PATH } from '@/store/modules/projects/gett
 import getFolderSize from 'get-folder-size'
 
 import { Chart } from "chart.js";
-// @Component({
-// 	components: {},
-// })
-// export default class Dashboard extends Vue {
-// 	cards = [{ c: 1 }, { c: 2 }, { c: 3 }]
-// }
 
 export default Vue.extend({
   components:{
