@@ -54,7 +54,7 @@
     "@vuese/parser": "^2.4.3",
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.6.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "directory-tree": "^2.2.4",
     "get-folder-size": "^2.0.1",
     "glob": "^7.1.6",
